@@ -138,10 +138,10 @@ function translate!(::Type{T}, scene::Transformable, t) where T
     end
 end
 """
-    translate!(scene::Transformable, xyz::VecTypes)
-    translate!(scene::Transformable, xyz...)
+    translate!(t::Transformable, xyz::VecTypes)
+    translate!(t::Transformable, xyz...)
 
-Apply an absolute translation to the Scene, translating it to `x, y, z`.
+Apply an absolute translation to the given input, translating it to `x, y, z`. All scenes and plots are transformable.
 """
 translate!(scene::Transformable, xyz::VecTypes) = translate!(Absolute, scene, xyz)
 translate!(scene::Transformable, xyz...) = translate!(Absolute, scene, xyz)
@@ -149,7 +149,7 @@ translate!(scene::Transformable, xyz...) = translate!(Absolute, scene, xyz)
 """
     translate!(Accum, scene::Transformable, xyz...)
 
-Translate the scene relative to its current position.
+Translate the given input relative to its current position.
 """
 translate!(::Type{T}, scene::Transformable, xyz...) where T = translate!(T, scene, xyz)
 
